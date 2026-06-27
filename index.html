@@ -8,6 +8,7 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
+  <div id="dynamic-bg" class="dynamic-bg"></div>
 
   <!-- MOBİL NAVİGASYON -->
   <nav class="mobile-nav">
@@ -278,6 +279,7 @@
         </div>
 
         <div id="partsMarketSection">
+          <div class="category-filter-bar" id="marketCategoryFilters" style="display:flex; gap:10px; margin-bottom:20px; overflow-x:auto; padding-bottom:10px;"></div>
           <div class="market-grid" id="partsMarketGrid"></div>
         </div>
 
@@ -413,8 +415,16 @@
       </div>
       <form id="vehicleForm">
         <div class="form-row">
-          <div class="form-group"><label class="form-label">Marka</label><input type="text" class="form-input" name="marka" required placeholder="Örn: BMW"></div>
-          <div class="form-group"><label class="form-label">Model</label><input type="text" class="form-input" name="model" required placeholder="Örn: M4"></div>
+          <div class="form-group"><label class="form-label">Marka</label>
+            <select class="form-input" name="marka" id="vehicleBrandSelect" required>
+              <option value="">Seçiniz...</option>
+            </select>
+          </div>
+          <div class="form-group"><label class="form-label">Model</label>
+            <select class="form-input" name="model" id="vehicleModelSelect" required disabled>
+              <option value="">Önce Marka Seçin</option>
+            </select>
+          </div>
         </div>
         <div class="form-row">
           <div class="form-group"><label class="form-label">Model Yılı</label><input type="number" class="form-input" name="yil" required placeholder="2022"></div>
@@ -432,7 +442,7 @@
           <div class="form-group"><label class="form-label">Motor / Donanım</label><input type="text" class="form-input" name="motor"></div>
           <div class="form-group"><label class="form-label">Renk</label><input type="text" class="form-input" name="renk"></div>
         </div>
-        <div class="form-group"><label class="form-label">Görsel URL (Unsplash Linki Önerilir)</label><input type="url" class="form-input" name="gorsel" placeholder="https://..."></div>
+        <div class="form-group"><label class="form-label">Görsel URL (Boş bırakırsanız otomatik atanır)</label><input type="url" class="form-input" name="gorsel" placeholder="https://..."></div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary btn-close-modal">İptal</button>
           <button type="submit" class="btn btn-primary">Aracı Kaydet</button>
@@ -470,7 +480,7 @@
           <div class="form-group"><label class="form-label">Başlık</label><input type="text" class="form-input" name="baslik" required></div>
           <div class="form-group"><label class="form-label">Kategori</label>
             <select class="form-input" name="kategori">
-              <option value="Dış Görünüm">Dış Görünüm</option><option value="Jant / Lastik">Jant / Lastik</option><option value="Süspansiyon">Süspansiyon</option><option value="Egzoz Sistemi">Egzoz Sistemi</option><option value="Performans / Motor">Performans / Motor</option><option value="Yazılım / Performans">Yazılım / Performans</option><option value="İç Tasarım">İç Tasarım</option><option value="Ses Sistemi">Ses Sistemi</option><option value="Kozmetik / Aksesuar">Kozmetik / Aksesuar</option>
+              <option value="Dış Görünüm">Dış Görünüm</option><option value="Jant / Lastik">Jant / Lastik</option><option value="Süspansiyon">Süspansiyon</option><option value="Egzoz Sistemi">Egzoz Sistemi</option><option value="Performans / Motor">Performans / Motor</option><option value="Yazılım / Performans">Yazılım / Performans</option><option value="İç Tasarım">İç Tasarım</option><option value="Ses Sistemi">Ses Sistemi</option><option value="Kozmetik / Aksesuar">Kozmetik / Aksesuar</option><option value="Araç Kaplama">Araç Kaplama</option><option value="Boya İşlemleri">Boya İşlemleri</option>
             </select>
           </div>
         </div>

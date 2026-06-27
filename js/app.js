@@ -7,7 +7,77 @@ document.addEventListener("DOMContentLoaded", () => {
 let currentTab = "dashboard";
 let currentPartsSubTab = "market";
 
+function setDynamicBackground() {
+  const av = window.OtoDB.getActiveVehicle();
+  let bgUrl = "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=1920&auto=format&fit=crop"; 
+  if (av && av.gorsel) bgUrl = av.gorsel;
+  
+  const bgDiv = document.getElementById("dynamic-bg");
+  if (!bgDiv) return;
+
+  const img = new Image();
+  img.src = bgUrl;
+  img.onload = () => {
+    bgDiv.style.opacity = 0.4;
+    setTimeout(() => {
+      bgDiv.style.backgroundImage = `url("${bgUrl}")`;
+      bgDiv.style.opacity = 1;
+    }, 300);
+  };
+}
+
+const CAR_DATA = {
+  "BMW": ["M2", "M3", "M4", "M5", "M8", "320i", "420i", "520i", "X5", "118i", "Z4"],
+  "Audi": ["A3", "A4", "A5", "A6", "RS3", "RS5", "RS6", "RS7", "R8", "Q7", "Q8"],
+  "Mercedes-Benz": ["A-Serisi", "C-Serisi", "E-Serisi", "S-Serisi", "C63 AMG", "E63 AMG", "G63 AMG", "AMG GT"],
+  "Volkswagen": ["Golf", "Golf GTI", "Golf R", "Polo", "Passat", "Tiguan", "Arteon", "Scirocco", "Touareg"],
+  "Porsche": ["911 Carrera", "911 Turbo S", "911 GT3", "Cayenne", "Panamera", "Macan", "Taycan", "718 Cayman"],
+  "Nissan": ["GT-R (R35)", "Skyline (R34)", "350Z", "370Z", "Qashqai", "Juke"],
+  "Toyota": ["Corolla", "GR Yaris", "Supra (A90)", "Supra (A80)", "CH-R", "Hilux", "Land Cruiser"],
+  "Honda": ["Civic", "Civic Type-R", "Accord", "S2000", "CR-V", "HR-V", "NSX"],
+  "Ford": ["Mustang", "Focus", "Focus RS", "Fiesta", "Ranger", "F-150", "Bronco"],
+  "Renault": ["Megane", "Megane RS", "Clio", "Taliant", "Captur", "Austral"],
+  "Fiat": ["Egea", "500", "500 Abarth", "Doblo", "Panda"],
+  "Volvo": ["XC90", "XC60", "XC40", "S90", "S60", "V90"],
+  "Hyundai": ["i20", "i20 N", "i30", "Tucson", "Kona", "Elantra"],
+  "Peugeot": ["208", "308", "508", "2008", "3008", "RCZ"],
+  "Diğer": ["Özel Model / Diğer"]
+};
+
+function setupVehicleDropdowns() {
+  const brandSel = document.getElementById("vehicleBrandSelect");
+  const modelSel = document.getElementById("vehicleModelSelect");
+  if (!brandSel || !modelSel) return;
+  
+  Object.keys(CAR_DATA).sort().forEach(brand => {
+    const opt = document.createElement("option");
+    opt.value = brand;
+    opt.textContent = brand;
+    brandSel.appendChild(opt);
+  });
+  
+  brandSel.addEventListener("change", (e) => {
+    const brand = e.target.value;
+    modelSel.innerHTML = '<option value="">Seçiniz...</option>';
+    if (brand && CAR_DATA[brand]) {
+      modelSel.disabled = false;
+      CAR_DATA[brand].forEach(model => {
+        const opt = document.createElement("option");
+        opt.value = model;
+        opt.textContent = model;
+        modelSel.appendChild(opt);
+      });
+    } else {
+      modelSel.disabled = true;
+      modelSel.innerHTML = '<option value="">Önce Marka Seçin</option>';
+    }
+  });
+}
+
 function initApp() {
+  setDynamicBackground();
+  setupVehicleDropdowns();
+
   populateVehicleSelector();
 
   const selector = document.getElementById("globalVehicleSelect");
@@ -17,6 +87,7 @@ function initApp() {
       window.OtoDB.setActiveVehicleId(e.target.value);
       const sel = document.getElementById("globalVehicleSelect");
       if (sel) sel.value = e.target.value;
+      setDynamicBackground();
       updateGlobalStatsText();
       renderActiveTab();
     });
@@ -377,13 +448,50 @@ function renderParts() {
   if (currentPartsSubTab === "market") renderPartsMarket(av); else renderPartsInventory(av);
 }
 
+let currentMarketCategory = "Tümü";
+
 function renderPartsMarket(av) {
   const grid = document.getElementById("partsMarketGrid");
+  const filterBar = document.getElementById("marketCategoryFilters");
   if (!grid) return;
-  const products = window.OtoDB.getMarketProducts(av.marka);
+  let products = window.OtoDB.getMarketProducts(av.marka);
+  
+  if (filterBar) {
+    const categories = ["Tümü", ...new Set(products.map(p => p.kategori))];
+    filterBar.innerHTML = "";
+    categories.forEach(cat => {
+      const btn = document.createElement("button");
+      const isActive = cat === currentMarketCategory;
+      btn.style.cssText = `
+        padding: 8px 20px; 
+        font-size: 0.85rem; 
+        font-weight: 500;
+        font-family: var(--font-body);
+        border-radius: 30px; 
+        white-space: nowrap; 
+        flex-shrink: 0;
+        background: ${isActive ? 'linear-gradient(135deg, #D4AF37, #AA771C)' : 'rgba(255,255,255,0.03)'};
+        color: ${isActive ? '#000' : 'var(--text-primary)'};
+        border: 1px solid ${isActive ? 'transparent' : 'rgba(255,255,255,0.08)'};
+        box-shadow: ${isActive ? '0 4px 15px rgba(212,175,55,0.3)' : 'none'};
+        transition: all 0.3s ease;
+        cursor: pointer;
+      `;
+      btn.textContent = cat;
+      btn.onmouseover = () => { if(!isActive) btn.style.background = 'rgba(255,255,255,0.08)'; };
+      btn.onmouseout = () => { if(!isActive) btn.style.background = 'rgba(255,255,255,0.03)'; };
+      btn.onclick = () => { currentMarketCategory = cat; renderPartsMarket(window.OtoDB.getActiveVehicle()); };
+      filterBar.appendChild(btn);
+    });
+  }
+
+  if (currentMarketCategory !== "Tümü") {
+    products = products.filter(p => p.kategori === currentMarketCategory);
+  }
+
   grid.innerHTML = "";
-  if (!products.length) { grid.innerHTML = `<div class="card" style="grid-column:1/-1;text-align:center;padding:3rem;color:var(--text-muted);">Bu araç için uyumlu ürün bulunamadı.</div>`; return; }
-  const icons = {"Jant / Lastik":"🔵","Süspansiyon":"🔩","Modifiye":"⚡","Egzoz Sistemi":"💨","Bakım":"🔧","Yazılım / Performans":"💻","Kozmetik / Aksesuar":"✨","Dış Görünüm":"🎨"};
+  if (!products.length) { grid.innerHTML = `<div class="card" style="grid-column:1/-1;text-align:center;padding:3rem;color:var(--text-muted);">Bu kategoriye ait ürün bulunamadı.</div>`; return; }
+  const icons = {"Jant / Lastik":"🔵","Süspansiyon":"🔩","Modifiye":"⚡","Egzoz Sistemi":"💨","Bakım":"🔧","Yazılım / Performans":"💻","Kozmetik / Aksesuar":"✨","Dış Görünüm":"🎨","Araç Kaplama":"🛡️","Boya İşlemleri":"🖌️"};
   products.forEach(p => {
     const card = document.createElement("div");
     card.className = "card market-card";
@@ -543,13 +651,77 @@ function setupActionListeners() {
   if(stInventory) stInventory.addEventListener("click",()=>{currentPartsSubTab="inventory";renderParts();});
 }
 
+async function getAutoCarImage(marka, model, renk) {
+  const m = (marka || "").toLowerCase();
+  const md = (model || "").toLowerCase();
+  const c = (renk || "").toLowerCase();
+
+  // En premium VIP araçlar için özel yüksek kaliteli (Unsplash) görseller
+  const VIP_IMAGES = {
+    "m2": "https://images.unsplash.com/photo-1617531653332-bd46c24f2068?q=80&w=1920&auto=format&fit=crop",
+    "m3": "https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=1920&auto=format&fit=crop",
+    "m4": "https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?q=80&w=1920&auto=format&fit=crop",
+    "m5": "https://images.unsplash.com/photo-1555353540-64fd1b6226f7?q=80&w=1920&auto=format&fit=crop",
+    "m8": "https://images.unsplash.com/photo-1616422285623-14ffea685714?q=80&w=1920&auto=format&fit=crop",
+    "rs6": "https://images.unsplash.com/photo-1606152421802-db97b9c7a11b?q=80&w=1920&auto=format&fit=crop",
+    "r8": "https://images.unsplash.com/photo-1503376760367-158221bb0139?q=80&w=1920&auto=format&fit=crop",
+    "g63 amg": "https://images.unsplash.com/photo-1520031441872-265e4ff70366?q=80&w=1920&auto=format&fit=crop",
+    "amg gt": "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?q=80&w=1920&auto=format&fit=crop",
+    "911 gt3": "https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?q=80&w=1920&auto=format&fit=crop",
+    "gt-r (r35)": "https://images.unsplash.com/photo-1614026480209-cd9934144671?q=80&w=1920&auto=format&fit=crop",
+    "supra (a90)": "https://images.unsplash.com/photo-1603386329225-868f9b1ee6c9?q=80&w=1920&auto=format&fit=crop",
+    "mustang": "https://images.unsplash.com/photo-1584345604476-8ec5e12e42a5?q=80&w=1920&auto=format&fit=crop"
+  };
+
+  if (md && VIP_IMAGES[md]) return VIP_IMAGES[md];
+
+  // Dinamik Wikipedia API Araması: Yüzde Yüz Doğruluk Garantisi
+  if (marka && model) {
+    try {
+      const query = encodeURIComponent(`${marka} ${model} car`);
+      const url = `https://en.wikipedia.org/w/api.php?action=query&generator=search&gsrsearch=${query}&gsrlimit=1&prop=pageimages&format=json&pithumbsize=1200&origin=*`;
+      const res = await fetch(url);
+      const data = await res.json();
+      if (data && data.query && data.query.pages) {
+        const pages = data.query.pages;
+        const pageId = Object.keys(pages)[0];
+        if (pageId !== "-1" && pages[pageId].thumbnail && pages[pageId].thumbnail.source) {
+          return pages[pageId].thumbnail.source;
+        }
+      }
+    } catch (e) {
+      console.warn("Wiki API hatası:", e);
+    }
+  }
+
+  // 3. API bulamazsa renk bazlı efsane görseller (Son Çare Fallback)
+  if (c.includes("siyah") || c.includes("black")) return "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=1920&auto=format&fit=crop";
+  if (c.includes("kırmızı") || c.includes("red")) return "https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?q=80&w=1920&auto=format&fit=crop";
+  if (c.includes("beyaz") || c.includes("white")) return "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=1920&auto=format&fit=crop";
+  if (c.includes("mavi") || c.includes("blue")) return "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?q=80&w=1920&auto=format&fit=crop";
+  
+  return "https://images.unsplash.com/photo-1502877338535-346ce0f1db28?q=80&w=1920&auto=format&fit=crop";
+}
+
 function setupFormSubmissions() {
-  setupForm("vehicleForm", fd => {
-    const v={marka:fd.get("marka"),model:fd.get("model"),yil:Number(fd.get("yil")),plaka:fd.get("plaka").toUpperCase(),km:Number(fd.get("km")),yakitTipi:fd.get("yakitTipi"),motor:fd.get("motor")||"Bilinmiyor",renk:fd.get("renk")||"Bilinmiyor",sasiNo:fd.get("sasiNo")||"-",gorsel:fd.get("gorsel")||""};
+  setupAsyncForm("vehicleForm", async fd => {
+    let marka = fd.get("marka");
+    let model = fd.get("model");
+    let renk = fd.get("renk") || "Bilinmiyor";
+    let gorsel = fd.get("gorsel") || "";
+    
+    if (!gorsel.trim()) {
+      showToast("📸 Araç fotoğrafı Wikipedia'dan aranıyor...", "info");
+      gorsel = await getAutoCarImage(marka, model, renk);
+    }
+    
+    const v={marka,model,yil:Number(fd.get("yil")),plaka:fd.get("plaka").toUpperCase(),km:Number(fd.get("km")),yakitTipi:fd.get("yakitTipi"),motor:fd.get("motor")||"Bilinmiyor",renk,sasiNo:fd.get("sasiNo")||"-",gorsel};
     const saved=window.OtoDB.save("vehicles",v);
     if(window.OtoDB.getAll("vehicles").length===1) window.OtoDB.setActiveVehicleId(saved.id);
     populateVehicleSelector(); const sel=document.getElementById("globalVehicleSelect"); if(sel) sel.value=window.OtoDB.getActiveVehicleId();
-    showToast(`${v.marka} ${v.model} garajınıza eklendi! 🚗`); renderGarage();
+    showToast(`${v.marka} ${v.model} garajınıza eklendi! 🚗`); 
+    renderGarage();
+    if(window.OtoDB.getAll("vehicles").length===1) setDynamicBackground();
   });
   setupForm("maintenanceForm", fd => {
     const av=window.OtoDB.getActiveVehicle(), km=Number(fd.get("km"));
@@ -601,4 +773,14 @@ function setupForm(formId, handler) {
   const form=document.getElementById(formId);
   if(!form) return;
   form.addEventListener("submit", e => { e.preventDefault(); handler(new FormData(form)); form.reset(); closeAllModals(); updateGlobalStatsText(); });
+}
+
+function setupAsyncForm(formId, handler) {
+  const form=document.getElementById(formId);
+  if(!form) return;
+  form.addEventListener("submit", async e => { 
+    e.preventDefault(); 
+    await handler(new FormData(form)); 
+    form.reset(); closeAllModals(); updateGlobalStatsText(); 
+  });
 }

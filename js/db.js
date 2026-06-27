@@ -12,7 +12,7 @@ const DEFAULT_VEHICLES = [
     motor: "3.0L Twin-Turbo L6",
     renk: "Yarı Mat Bavyera Mavisi",
     sasiNo: "WBA43XX290X123456",
-    gorsel: "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?q=80&w=600&auto=format&fit=crop"
+    gorsel: "file:///C:/Users/PC/.gemini/antigravity/brain/430e99df-77f9-4411-992c-a785d7bb427a/bmw_m4_1782564147144.png"
   },
   {
     id: "v-2",
@@ -25,7 +25,7 @@ const DEFAULT_VEHICLES = [
     motor: "2.0L TSI AWD",
     renk: "Lapiz Mavi",
     sasiNo: "WVWZZZCDZMW123456",
-    gorsel: "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?q=80&w=600&auto=format&fit=crop"
+    gorsel: "file:///C:/Users/PC/.gemini/antigravity/brain/430e99df-77f9-4411-992c-a785d7bb427a/vw_golf_r_1782564163428.png"
   }
 ];
 
@@ -77,44 +77,56 @@ const MARKET_PRODUCTS = [
   { id: "mp-bmw-1", compatibleWith: ["BMW"], ad: "Vossen HF-5 20\" Forged Parlak Siyah Jant Takımı", kategori: "Jant / Lastik", marka: "Vossen Wheels", fiyat: 185000, aciklama: "BMW M4 için özel ölçülerde üretilmiş, ultra hafif dövme (forged) alüminyum spor jant kiti.", gorsel: "https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=400&auto=format&fit=crop" },
   { id: "mp-bmw-2", compatibleWith: ["BMW"], ad: "BBS LM 20\" Gümüş Çift Parçalı Vidalı Jant Takımı", kategori: "Jant / Lastik", marka: "BBS", fiyat: 245000, aciklama: "Klasik efsanevi çift parçalı, vidalı yarış jantı tasarımı.", gorsel: "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?q=80&w=400&auto=format&fit=crop" },
   { id: "mp-bmw-3", compatibleWith: ["BMW"], ad: "KW Variant 3 (V3) Yükseklik & Sertlik Ayarlı Coilover", kategori: "Süspansiyon", marka: "KW Suspension", fiyat: 84000, aciklama: "Sıkıştırma ve geri tepme sönümleme ayarlı coilover.", gorsel: "https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?q=80&w=400&auto=format&fit=crop" },
-  { id: "mp-bmw-4", compatibleWith: ["BMW"], ad: "Eventuri M4 G82 Karbon Fiber Emiş Sistemi", kategori: "Modifiye", marka: "Eventuri", fiyat: 46000, aciklama: "Patentli hava emiş tasarımı. Tam karbon fiber yapı.", gorsel: "" },
+  { id: "mp-bmw-4", compatibleWith: ["BMW"], ad: "Eventuri M4 G82 Karbon Fiber Emiş Sistemi", kategori: "Modifiye", marka: "Eventuri", fiyat: 46000, aciklama: "Patentli hava emiş tasarımı. Tam karbon fiber yapı.", gorsel: "https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?q=80&w=400&auto=format&fit=crop" },
   { id: "mp-bmw-5", compatibleWith: ["BMW"], ad: "Akrapovič Evolution Titanyum Komple Egzoz Sistemi", kategori: "Egzoz Sistemi", marka: "Akrapovič", fiyat: 168000, aciklama: "Komple titanyum ultra hafif egzoz sistemi.", gorsel: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?q=80&w=400&auto=format&fit=crop" },
-  { id: "mp-bmw-6", compatibleWith: ["BMW"], ad: "Brembo GT 6P Ön Fren Kiti (380mm Delikli Disk)", kategori: "Modifiye", marka: "Brembo", fiyat: 142000, aciklama: "Kırmızı kaliperli, monoblok 6 pistonlu Brembo GT.", gorsel: "" },
+  { id: "mp-bmw-6", compatibleWith: ["BMW"], ad: "Brembo GT 6P Ön Fren Kiti (380mm Delikli Disk)", kategori: "Modifiye", marka: "Brembo", fiyat: 142000, aciklama: "Kırmızı kaliperli, monoblok 6 pistonlu Brembo GT.", gorsel: "https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=400&auto=format&fit=crop" },
   { id: "mp-bmw-7", compatibleWith: ["BMW"], ad: "M Performance Karbon Fiber Ön Splitter", kategori: "Dış Görünüm", marka: "M Performance", fiyat: 28000, aciklama: "Orijinal karbon fiber ön tampon altı lip.", gorsel: "https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?q=80&w=400&auto=format&fit=crop" },
-  { id: "mp-bmw-8", compatibleWith: ["BMW"], ad: "M Performance Karbon Direksiyon (LED Vites Göstergeli)", kategori: "Kozmetik / Aksesuar", marka: "M Performance", fiyat: 44000, aciklama: "Alcantara/Karbon kaplama spor direksiyon.", gorsel: "" },
-  { id: "mp-bmw-9", compatibleWith: ["BMW"], ad: "H&R 25mm Ön + 20mm Arka Spacer Seti", kategori: "Süspansiyon", marka: "H&R", fiyat: 12500, aciklama: "CNC işlenmiş alüminyum flanşlı jant aralayıcı.", gorsel: "" },
+  { id: "mp-bmw-8", compatibleWith: ["BMW"], ad: "M Performance Karbon Direksiyon (LED Vites Göstergeli)", kategori: "Kozmetik / Aksesuar", marka: "M Performance", fiyat: 44000, aciklama: "Alcantara/Karbon kaplama spor direksiyon.", gorsel: "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?q=80&w=400&auto=format&fit=crop" },
+  { id: "mp-bmw-9", compatibleWith: ["BMW"], ad: "H&R 25mm Ön + 20mm Arka Spacer Seti", kategori: "Süspansiyon", marka: "H&R", fiyat: 12500, aciklama: "CNC işlenmiş alüminyum flanşlı jant aralayıcı.", gorsel: "https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?q=80&w=400&auto=format&fit=crop" },
   { id: "mp-bmw-10", compatibleWith: ["BMW"], ad: "Akrapovič Slip-On Race Titanyum Egzoz", kategori: "Egzoz Sistemi", marka: "Akrapovič", fiyat: 95000, aciklama: "Yarım sistem titanyum egzoz.", gorsel: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?q=80&w=400&auto=format&fit=crop" },
-  { id: "mp-bmw-11", compatibleWith: ["BMW"], ad: "Racing Dynamics Karbon Fiber Kaput", kategori: "Dış Görünüm", marka: "Racing Dynamics", fiyat: 55000, aciklama: "2x2 örgülü gerçek karbon fiber kaput.", gorsel: "" },
-  { id: "mp-bmw-12", compatibleWith: ["BMW"], ad: "DINAN Stage 2 Performans Paketi", kategori: "Yazılım / Performans", marka: "DINAN", fiyat: 78000, aciklama: "Stage 2 ECU + TCU yazılım paketi.", gorsel: "" },
+  { id: "mp-bmw-11", compatibleWith: ["BMW"], ad: "Racing Dynamics Karbon Fiber Kaput", kategori: "Dış Görünüm", marka: "Racing Dynamics", fiyat: 55000, aciklama: "2x2 örgülü gerçek karbon fiber kaput.", gorsel: "https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?q=80&w=400&auto=format&fit=crop" },
+  { id: "mp-bmw-12", compatibleWith: ["BMW"], ad: "DINAN Stage 2 Performans Paketi", kategori: "Yazılım / Performans", marka: "DINAN", fiyat: 78000, aciklama: "Stage 2 ECU + TCU yazılım paketi.", gorsel: "https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?q=80&w=400&auto=format&fit=crop" },
   { id: "mp-bmw-13", compatibleWith: ["BMW"], ad: "Apex EC-7 19\" Saten Siyah Jant Takımı", kategori: "Jant / Lastik", marka: "Apex Wheels", fiyat: 128000, aciklama: "Monoblock alüminyum döküm jant.", gorsel: "https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=400&auto=format&fit=crop" },
   { id: "mp-bmw-14", compatibleWith: ["BMW"], ad: "KW Clubsport 3-Way Ayarlı Coilover", kategori: "Süspansiyon", marka: "KW Suspension", fiyat: 145000, aciklama: "Pist odaklı 3 yönlü ayar.", gorsel: "https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?q=80&w=400&auto=format&fit=crop" },
-  { id: "mp-bmw-15", compatibleWith: ["BMW"], ad: "OEM BMW M4 Yarım Deri/Alcantara Koltuk", kategori: "Kozmetik / Aksesuar", marka: "BMW", fiyat: 92000, aciklama: "M logosu işlemeli spor koltuk.", gorsel: "" },
+  { id: "mp-bmw-15", compatibleWith: ["BMW"], ad: "OEM BMW M4 Yarım Deri/Alcantara Koltuk", kategori: "Kozmetik / Aksesuar", marka: "BMW", fiyat: 92000, aciklama: "M logosu işlemeli spor koltuk.", gorsel: "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?q=80&w=400&auto=format&fit=crop" },
   { id: "mp-bmw-16", compatibleWith: ["BMW"], ad: "Rotiform LHR 19\" Parlak Bronz Jant", kategori: "Jant / Lastik", marka: "Rotiform", fiyat: 96000, aciklama: "Vintage spor görünümü katan döküm jant.", gorsel: "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?q=80&w=400&auto=format&fit=crop" },
-  { id: "mp-bmw-17", compatibleWith: ["BMW"], ad: "Brembo Karbon Seramik Ön Disk Seti", kategori: "Modifiye", marka: "Brembo", fiyat: 285000, aciklama: "Tam karbon seramik disk seti.", gorsel: "" },
+  { id: "mp-bmw-17", compatibleWith: ["BMW"], ad: "Brembo Karbon Seramik Ön Disk Seti", kategori: "Modifiye", marka: "Brembo", fiyat: 285000, aciklama: "Tam karbon seramik disk seti.", gorsel: "https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=400&auto=format&fit=crop" },
 
   // VW Ürünleri (12 adet)
   { id: "mp-vw-1", compatibleWith: ["Volkswagen"], ad: "Pretoria 19\" Parlak Siyah OEM Jant", kategori: "Jant / Lastik", marka: "VW R", fiyat: 58000, aciklama: "Hafif alüminyum alaşım orijinal opsiyon.", gorsel: "https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=400&auto=format&fit=crop" },
   { id: "mp-vw-2", compatibleWith: ["Volkswagen"], ad: "BBS CH-R II 19\" Titanyum Gri Jant", kategori: "Jant / Lastik", marka: "BBS", fiyat: 125000, aciklama: "Motorsporları tasarımı iki parçalı hafif jant.", gorsel: "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?q=80&w=400&auto=format&fit=crop" },
   { id: "mp-vw-3", compatibleWith: ["Volkswagen"], ad: "Rotiform LAS-R 19\" Mat Siyah Jant", kategori: "Jant / Lastik", marka: "Rotiform", fiyat: 82000, aciklama: "Aerodinamik çok kollu jant tasarımı.", gorsel: "https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=400&auto=format&fit=crop" },
-  { id: "mp-vw-4", compatibleWith: ["Volkswagen"], ad: "RacingLine R600 Soğuk Hava Filtre Kiti", kategori: "Modifiye", marka: "RacingLine", fiyat: 24000, aciklama: "Çift katmanlı emme kiti.", gorsel: "" },
+  { id: "mp-vw-4", compatibleWith: ["Volkswagen"], ad: "RacingLine R600 Soğuk Hava Filtre Kiti", kategori: "Modifiye", marka: "RacingLine", fiyat: 24000, aciklama: "Çift katmanlı emme kiti.", gorsel: "https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?q=80&w=400&auto=format&fit=crop" },
   { id: "mp-vw-5", compatibleWith: ["Volkswagen"], ad: "Milltek Sport Valved Cat-Back Egzoz", kategori: "Egzoz Sistemi", marka: "Milltek", fiyat: 52000, aciklama: "Paslanmaz çelik spor egzoz.", gorsel: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?q=80&w=400&auto=format&fit=crop" },
   { id: "mp-vw-6", compatibleWith: ["Volkswagen"], ad: "KW Variant 1 (V1) Coilover", kategori: "Süspansiyon", marka: "KW Suspension", fiyat: 46000, aciklama: "Sadece yükseklik ayarlı coilover.", gorsel: "https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?q=80&w=400&auto=format&fit=crop" },
   { id: "mp-vw-7", compatibleWith: ["Volkswagen"], ad: "Wagner Tuning Gen.2 Intercooler", kategori: "Modifiye", marka: "Wagner Tuning", fiyat: 38000, aciklama: "Performans intercooler.", gorsel: "https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?q=80&w=400&auto=format&fit=crop" },
-  { id: "mp-vw-8", compatibleWith: ["Volkswagen"], ad: "TVS Engineering DSG Debriyaj Kiti", kategori: "Modifiye", marka: "TVS", fiyat: 65000, aciklama: "Güçlendirilmiş kavrama seti.", gorsel: "" },
+  { id: "mp-vw-8", compatibleWith: ["Volkswagen"], ad: "TVS Engineering DSG Debriyaj Kiti", kategori: "Modifiye", marka: "TVS", fiyat: 65000, aciklama: "Güçlendirilmiş kavrama seti.", gorsel: "https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?q=80&w=400&auto=format&fit=crop" },
   { id: "mp-vw-9", compatibleWith: ["Volkswagen"], ad: "Maxton Design Ön Lip", kategori: "Dış Görünüm", marka: "Maxton", fiyat: 9500, aciklama: "Agresif ön lip seti.", gorsel: "https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?q=80&w=400&auto=format&fit=crop" },
   { id: "mp-vw-10", compatibleWith: ["Volkswagen"], ad: "H&R Spor Yay Seti", kategori: "Süspansiyon", marka: "H&R", fiyat: 14500, aciklama: "25mm alçaltma spor yay.", gorsel: "https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?q=80&w=400&auto=format&fit=crop" },
-  { id: "mp-vw-11", compatibleWith: ["Volkswagen"], ad: "COBB Tuning ECU Flasher", kategori: "Yazılım / Performans", marka: "COBB Tuning", fiyat: 32000, aciklama: "OBD-II bağlantılı ECU cihazı.", gorsel: "" },
-  { id: "mp-vw-12", compatibleWith: ["Volkswagen"], ad: "Brembo Sport Arka Fren Diski", kategori: "Modifiye", marka: "Brembo", fiyat: 22000, aciklama: "Delikli arka disk ve balata.", gorsel: "" },
+  { id: "mp-vw-11", compatibleWith: ["Volkswagen"], ad: "COBB Tuning ECU Flasher", kategori: "Yazılım / Performans", marka: "COBB Tuning", fiyat: 32000, aciklama: "OBD-II bağlantılı ECU cihazı.", gorsel: "https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?q=80&w=400&auto=format&fit=crop" },
+  { id: "mp-vw-12", compatibleWith: ["Volkswagen"], ad: "Brembo Sport Arka Fren Diski", kategori: "Modifiye", marka: "Brembo", fiyat: 22000, aciklama: "Delikli arka disk ve balata.", gorsel: "https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=400&auto=format&fit=crop" },
 
   // Evrensel Ürünler (8 adet)
-  { id: "mp-univ-1", compatibleWith: ["BMW", "Volkswagen"], ad: "Motul 300V Power 5W-40 Yağ", kategori: "Bakım", marka: "Motul", fiyat: 3800, aciklama: "Ester bazlı yarış yağı.", gorsel: "" },
+  { id: "mp-univ-1", compatibleWith: ["BMW", "Volkswagen"], ad: "Motul 300V Power 5W-40 Yağ", kategori: "Bakım", marka: "Motul", fiyat: 3800, aciklama: "Ester bazlı yarış yağı.", gorsel: "https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?q=80&w=400&auto=format&fit=crop" },
   { id: "mp-univ-2", compatibleWith: ["BMW", "Volkswagen"], ad: "Michelin Pilot Sport 4S (Adet)", kategori: "Jant / Lastik", marka: "Michelin", fiyat: 9200, aciklama: "Ultra yüksek performanslı lastik.", gorsel: "https://images.unsplash.com/photo-1578844251758-2f71da64c96f?q=80&w=400&auto=format&fit=crop" },
   { id: "mp-univ-3", compatibleWith: ["BMW", "Volkswagen"], ad: "Pirelli P Zero Trofeo R", kategori: "Jant / Lastik", marka: "Pirelli", fiyat: 11500, aciklama: "Yarı yarış lastik kategorisi.", gorsel: "https://images.unsplash.com/photo-1578844251758-2f71da64c96f?q=80&w=400&auto=format&fit=crop" },
-  { id: "mp-univ-4", compatibleWith: ["BMW", "Volkswagen"], ad: "NGK Laser Iridium Soğuk Buji", kategori: "Bakım", marka: "NGK", fiyat: 4600, aciklama: "Soğuk buji takımı.", gorsel: "" },
-  { id: "mp-univ-5", compatibleWith: ["BMW", "Volkswagen"], ad: "Brembo Racing Fren Hidroliği", kategori: "Bakım", marka: "Brembo", fiyat: 1100, aciklama: "Yarış fren hidroliği.", gorsel: "" },
-  { id: "mp-univ-6", compatibleWith: ["BMW", "Volkswagen"], ad: "Liqui Moly Gear Oil", kategori: "Bakım", marka: "Liqui Moly", fiyat: 850, aciklama: "Şanzıman ve diferansiyel yağı.", gorsel: "" },
+  { id: "mp-univ-4", compatibleWith: ["BMW", "Volkswagen"], ad: "NGK Laser Iridium Soğuk Buji", kategori: "Bakım", marka: "NGK", fiyat: 4600, aciklama: "Soğuk buji takımı.", gorsel: "https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?q=80&w=400&auto=format&fit=crop" },
+  { id: "mp-univ-5", compatibleWith: ["BMW", "Volkswagen"], ad: "Brembo Racing Fren Hidroliği", kategori: "Bakım", marka: "Brembo", fiyat: 1100, aciklama: "Yarış fren hidroliği.", gorsel: "https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=400&auto=format&fit=crop" },
+  { id: "mp-univ-6", compatibleWith: ["BMW", "Volkswagen"], ad: "Liqui Moly Gear Oil", kategori: "Bakım", marka: "Liqui Moly", fiyat: 850, aciklama: "Şanzıman ve diferansiyel yağı.", gorsel: "https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?q=80&w=400&auto=format&fit=crop" },
   { id: "mp-univ-7", compatibleWith: ["BMW", "Volkswagen"], ad: "Compomotive 18\" Jant Takımı", kategori: "Jant / Lastik", marka: "Compomotive", fiyat: 68000, aciklama: "Klasik yarış jantı.", gorsel: "https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=400&auto=format&fit=crop" },
-  { id: "mp-univ-8", compatibleWith: ["BMW", "Volkswagen"], ad: "OMP WRC-R Spor Direksiyon", kategori: "Kozmetik / Aksesuar", marka: "OMP Racing", fiyat: 18500, aciklama: "Alcantara/karbon direksiyon.", gorsel: "" }
+  { id: "mp-univ-8", compatibleWith: ["BMW", "Volkswagen"], ad: "OMP WRC-R Spor Direksiyon", kategori: "Kozmetik / Aksesuar", marka: "OMP Racing", fiyat: 18500, aciklama: "Alcantara/karbon direksiyon.", gorsel: "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?q=80&w=400&auto=format&fit=crop" },
+  { id: "mp-univ-9", compatibleWith: ["BMW", "Volkswagen"], ad: "Hexis Nardo Gri Araç Kaplama", kategori: "Araç Kaplama", marka: "Hexis", fiyat: 45000, aciklama: "Premium kalite, kendinden iyileşebilen nardo gri folyo.", gorsel: "https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?q=80&w=400&auto=format&fit=crop" },
+  { id: "mp-univ-10", compatibleWith: ["BMW", "Volkswagen"], ad: "3M 2080 Saten Siyah Kaplama", kategori: "Araç Kaplama", marka: "3M", fiyat: 52000, aciklama: "Tam araç saten siyah folyo kaplama.", gorsel: "https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?q=80&w=400&auto=format&fit=crop" },
+  { id: "mp-univ-11", compatibleWith: ["BMW", "Volkswagen"], ad: "PPF Şeffaf Boya Koruma Filmi (Tam Araç)", kategori: "Araç Kaplama", marka: "Xpel", fiyat: 85000, aciklama: "Taş izi ve çiziklere karşı tam koruma sağlayan poliüretan film.", gorsel: "https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?q=80&w=400&auto=format&fit=crop" },
+  { id: "mp-univ-12", compatibleWith: ["BMW", "Volkswagen"], ad: "Jant Boyama (Elektrostatik Toz Boya)", kategori: "Boya İşlemleri", marka: "Custom", fiyat: 12000, aciklama: "4 adet jantın fırınlı toz boya ile istenilen renge boyanması.", gorsel: "https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=400&auto=format&fit=crop" },
+  { id: "mp-univ-13", compatibleWith: ["BMW", "Volkswagen"], ad: "Kaliper Boyama (Isıya Dayanıklı)", kategori: "Boya İşlemleri", marka: "Custom", fiyat: 6500, aciklama: "Fren kaliperlerinin ısıya dayanıklı özel fırın boya ile boyanması.", gorsel: "https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=400&auto=format&fit=crop" },
+  { id: "mp-univ-14", compatibleWith: ["BMW", "Volkswagen"], ad: "Seramik Kaplama (Çift Kat)", kategori: "Boya İşlemleri", marka: "Gyeon", fiyat: 18000, aciklama: "Boyayı asit, reçine ve güneş yanığına karşı koruyan 9H seramik uygulaması.", gorsel: "https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?q=80&w=400&auto=format&fit=crop" },
+  { id: "mp-univ-15", compatibleWith: ["BMW", "Volkswagen"], ad: "Recaro Pole Position Yarış Koltuğu", kategori: "İç Tasarım", marka: "Recaro", fiyat: 65000, aciklama: "Ultra hafif karbon iskeletli profesyonel yarış koltuğu.", gorsel: "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?q=80&w=400&auto=format&fit=crop" },
+  { id: "mp-univ-16", compatibleWith: ["BMW", "Volkswagen"], ad: "M Performance Tarzı Karbon Aynalar", kategori: "Dış Görünüm", marka: "Custom", fiyat: 14000, aciklama: "Gerçek karbon fiber ayna kapak seti.", gorsel: "https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?q=80&w=400&auto=format&fit=crop" },
+  { id: "mp-univ-17", compatibleWith: ["BMW", "Volkswagen"], ad: "Wagner Tuning Downpipe", kategori: "Egzoz Sistemi", marka: "Wagner Tuning", fiyat: 22000, aciklama: "Katalizörsüz yüksek akışlı downpipe.", gorsel: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?q=80&w=400&auto=format&fit=crop" },
+  { id: "mp-univ-18", compatibleWith: ["BMW", "Volkswagen"], ad: "Garrett GTX3071R Gen II Turbo", kategori: "Performans / Motor", marka: "Garrett", fiyat: 110000, aciklama: "700HP kapasiteli performans bilyalı turboşarj.", gorsel: "https://images.unsplash.com/photo-1596700684534-110f00f074d2?q=80&w=400&auto=format&fit=crop" },
+  { id: "mp-univ-19", compatibleWith: ["BMW", "Volkswagen"], ad: "Forged Karbon LED Direksiyon", kategori: "İç Tasarım", marka: "Custom", fiyat: 48000, aciklama: "RPM göstergeli özel dökme karbon spor direksiyon.", gorsel: "https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=400&auto=format&fit=crop" },
+  { id: "mp-univ-20", compatibleWith: ["BMW", "Volkswagen"], ad: "Özel Tasarım Bi-LED Farlar", kategori: "Dış Görünüm", marka: "Custom", fiyat: 35000, aciklama: "Siyah tabanlı, lazer görünümlü gündüz farı (DRL) tasarımı.", gorsel: "https://images.unsplash.com/photo-1546545167-28562145b232?q=80&w=400&auto=format&fit=crop" }
 ];
 
 class OtoDB {
@@ -124,6 +136,10 @@ class OtoDB {
   }
 
   init() {
+    if (!localStorage.getItem("otodb_v7_updated")) {
+      localStorage.clear();
+      localStorage.setItem("otodb_v7_updated", "true");
+    }
     this._checkAndInit("vehicles", DEFAULT_VEHICLES);
     this._checkAndInit("maintenance", DEFAULT_MAINTENANCE);
     this._checkAndInit("modifications", DEFAULT_MODIFICATIONS);
